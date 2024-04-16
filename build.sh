@@ -1,1 +1,1 @@
-GOARCH=amd64 go build -o shutdown.exe
+GOOS=windows GOARCH=amd64 go build -o shutdown.exe

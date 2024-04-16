@@ -11,6 +11,7 @@ import (
 
 func pingCheck(target string) bool {
     pinger, err := probing.NewPinger("192.168.1.1")
+    pinger.SetPrivileged(true)
     if err != nil {
         panic(err)
         return false
@@ -35,7 +36,7 @@ func main() {
     if err != nil {
         log.Fatal("Error opening log file:", err)
     }
-    defer log.Printf("%s Closing log file...", currentTime.Format("2006-01-02 15:04:05"))
+    defer log.Printf("%s Closing log file...", time.Now().Format("2006-01-02 15:04:05"))
     defer logFile.Close()
 
     log.SetOutput(logFile)
